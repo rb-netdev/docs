@@ -138,10 +138,10 @@ By default Dapr doesn't transform the state data from applications. This means D
 
 However application state often needs to get encrypted at rest to provide stronger security in enterprise workloads or regulated environments and Dapr does provide automatic client side state encryption based on AES256. Read [How-To: Encrypt application state]({{< ref howto-encrypt-state.md >}}) for more details.
 
-## Dapr Runtrime state
+## Dapr Runtime state
 Importantly the Dapr runtime does not store any data at rest, meaning that Dapr runtime has no dependency on any state stores for its operation and can be considered stateless.
 
-# Using security capabilies in an example application
+# Using security capabilities in an example application
 The diagram below shows a number of the security capabilities put together into an example application hosted on Kubernetes. You can see that the Dapr control plane, the Redis state store and each of the services have been deployed to their own namespaces. Also when deploying on Kubernetes, you can use regular Kubernetes RBAC to control access to management activities.
 
 In the application, requests are received by the ingress reverse-proxy which has a Dapr sidecar running next to it. From the reverse proxy, Dapr uses service invocation to call onto service A which then publishes a message to Serivce B. Service B retrieves a secret in order to read and save state to a Redis state store. 
